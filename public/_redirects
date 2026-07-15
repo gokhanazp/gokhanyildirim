@@ -1,0 +1,3 @@
+# st-textile statik alt site — çıplak /st-textile isteğini index.html'e sun (200 = rewrite, yönlendirme değil)
+/st-textile      /st-textile/index.html   200
+/st-textile/     /st-textile/index.html   200
