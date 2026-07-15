@@ -8,7 +8,7 @@ import Image from "next/image";
  */
 export default function Logo({
   size = 25,
-  href = "/",
+  href = "/#hero",
 }: {
   size?: number;
   href?: string;
