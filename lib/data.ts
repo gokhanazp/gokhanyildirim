@@ -172,6 +172,60 @@ export const projectFilters: (ProjectTag | "Tümü")[] = [
   "Kişisel",
 ];
 
+/** Projeler bölümü artık yeteneğe göre gruplanır (filtre yerine). */
+export interface ProjectGroup {
+  id: string;
+  label: string;
+  intro: string;
+  names: string[];
+}
+
+export const projectGroups: ProjectGroup[] = [
+  {
+    id: "ecommerce",
+    label: "Shopify & E-ticaret",
+    intro:
+      "Shopify, OpenCart ve WooCommerce üzerinde dönüşüm odaklı, ölçeklenebilir mağazalar.",
+    names: ["Cras Moda", "Xprime Yedek Parça", "Voidu", "Yedek Parçam"],
+  },
+  {
+    id: "mobile",
+    label: "Mobil Uygulama",
+    intro:
+      "iOS ve Android için React Native ile geliştirilen native mobil deneyimler.",
+    names: ["Riverside Burgers"],
+  },
+  {
+    id: "corporate",
+    label: "React & Kurumsal Siteler",
+    intro:
+      "Kurumsal web siteleri ve React/Node.js tabanlı özel web uygulamaları.",
+    names: [
+      "Piba Wings Mobility",
+      "İstanbul Endüstriyel Mutfak Servisi",
+      "Endüstriyel Buzdolabı Tamircisi",
+      "Öztiryakiler Yetkili Servisi",
+      "Şimşek Çalışma İzni",
+      "Oskai",
+      "Atalay Servisi",
+    ],
+  },
+  {
+    id: "personal",
+    label: "Kişisel & SaaS Projeler",
+    intro:
+      "Kendi girişimlerim: yapay zekâ destekli araçlar ve kullanışlı platformlar.",
+    names: ["QR Menu List", "QRCodeShine", "Türkiye Nöbetçi Eczane"],
+  },
+];
+
+/** Bir gruptaki projeleri, names sırasına göre döndürür. */
+export function projectsInGroup(group: ProjectGroup): Project[] {
+  return group.names
+    .map((n) => projects.find((p) => p.name === n))
+    .filter((p): p is Project => Boolean(p));
+}
+
 /** Tasarım dosyasındaki filtre mantığının birebir karşılığı. */
 export function filterProjects(
   list: Project[],
