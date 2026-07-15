@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ST Global Textile — Tasarım Seçimi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/img/logo.jpeg" />
+  <style>
+    body{font-family:'Inter',sans-serif;background:#0b0b0d;color:#fff;margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.25rem}
+    h1,.disp{font-family:'Syne',sans-serif}
+    .card{transition:transform .35s ease, box-shadow .35s ease;overflow:hidden}
+    .card:hover{transform:translateY(-8px);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+    .shot{height:180px;background-size:cover;background-position:center}
+    .opts{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;max-width:1320px;width:100%}
+    @media(max-width:1024px){.opts{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.opts{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <img src="assets/img/logo-white.png" alt="ST Global" style="height:120px;width:auto;margin-bottom:1.5rem" />
+  <p style="letter-spacing:.35em;text-transform:uppercase;font-size:.72rem;color:#c8a24c;margin:0 0 .5rem">ST Global Textile</p>
+  <h1 style="font-size:2.5rem;margin:0 0 .5rem;text-align:center">Dört Tasarım, Tek Marka</h1>
+  <p style="color:#a1a1aa;margin:0 0 3rem;text-align:center;max-width:34rem">Aşağıdaki dört tasarımdan birini seçerek siteyi inceleyebilirsiniz.</p>
+
+  <div class="opts">
+    <a href="index.html" class="card" style="background:#fff;color:#16181d;text-decoration:none;border:1px solid #e6e8ec">
+      <div class="shot" style="background-image:linear-gradient(rgba(245,246,248,.2),rgba(245,246,248,.2)),url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=900&q=70')"></div>
+      <div style="padding:1.75rem">
+        <p style="letter-spacing:.3em;text-transform:uppercase;font-size:.66rem;color:#8b9099;margin:0 0 .6rem">Versiyon 1</p>
+        <h2 class="disp" style="font-size:1.6rem;margin:0 0 .6rem">Açık &amp; Minimal</h2>
+        <p style="color:#3a3d44;font-size:.92rem;margin:0 0 1.2rem;line-height:1.5">Gümüş-gri zarif tonlar, bol beyaz alan, sade ve klasik lüks his.</p>
+        <span style="display:inline-block;background:#16181d;color:#fff;padding:.7rem 1.6rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase">Siteyi Aç →</span>
+      </div>
+    </a>
+
+    <a href="v2/index.html" class="card" style="background:#141417;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.12)">
+      <div class="shot" style="background-image:linear-gradient(rgba(11,11,13,.45),rgba(11,11,13,.45)),url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=900&q=70')"></div>
+      <div style="padding:1.75rem">
+        <p style="letter-spacing:.3em;text-transform:uppercase;font-size:.66rem;color:#c8a24c;margin:0 0 .6rem">Versiyon 2</p>
+        <h2 class="disp" style="font-size:1.6rem;margin:0 0 .6rem">Koyu &amp; Lüks</h2>
+        <p style="color:#a1a1aa;font-size:.92rem;margin:0 0 1.2rem;line-height:1.5">Siyah + altın, sinematik hero, büyük modern tipografi, hareketli yeni nesil his.</p>
+        <span style="display:inline-block;background:#c8a24c;color:#0b0b0d;padding:.7rem 1.6rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600">Siteyi Aç →</span>
+      </div>
+    </a>
+    <a href="v3/index.html" class="card" style="background:#f6f4ee;color:#14201b;text-decoration:none;border:1px solid #e2ddd0">
+      <div class="shot" style="background-image:linear-gradient(rgba(13,59,46,.35),rgba(13,59,46,.35)),url('https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=900&q=70')"></div>
+      <div style="padding:1.75rem">
+        <p style="letter-spacing:.3em;text-transform:uppercase;font-size:.66rem;color:#16a06a;margin:0 0 .6rem">Versiyon 3</p>
+        <h2 class="disp" style="font-size:1.6rem;margin:0 0 .6rem">Modern &amp; Yeşil</h2>
+        <p style="color:#5d6b63;font-size:.92rem;margin:0 0 1.2rem;line-height:1.5">Fildişi zemin + canlı zümrüt yeşili, üstte header, kalın Space Grotesk başlıklar, yuvarlatılmış kartlar — taze ve modern.</p>
+        <span style="display:inline-block;background:#16a06a;color:#fff;padding:.7rem 1.6rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;border-radius:999px">Siteyi Aç →</span>
+      </div>
+    </a>
+    <a href="v4/index.html" class="card" style="background:#16233f;color:#fff;text-decoration:none;border:1px solid #16233f">
+      <div class="shot" style="background-image:linear-gradient(rgba(15,24,48,.35),rgba(15,24,48,.55)),url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=900&q=70')"></div>
+      <div style="padding:1.75rem">
+        <p style="letter-spacing:.3em;text-transform:uppercase;font-size:.66rem;color:#f08a68;margin:0 0 .6rem">Versiyon 4</p>
+        <h2 class="disp" style="font-size:1.6rem;margin:0 0 .6rem">Split &amp; Bento</h2>
+        <p style="color:rgba(255,255,255,.7);font-size:.92rem;margin:0 0 1.2rem;line-height:1.5">Katı üst header (görsel üzerinde değil), ikiye bölünmüş hero, bento ızgara. Lacivert + mercan + krem, farklı yapı.</p>
+        <span style="display:inline-block;background:#e8643c;color:#fff;padding:.7rem 1.6rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase">Siteyi Aç →</span>
+      </div>
+    </a>
+  </div>
+
+  <p style="color:#6b6b73;font-size:.78rem;margin-top:3rem">© 2026 ST Global Textile</p>
+</body>
+</html>

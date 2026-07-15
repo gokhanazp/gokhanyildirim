@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+@theme {
+  /* Renkler */
+  --color-bg: #0b0c0e;
+  --color-bg-alt: #0d0f11;
+  --color-ink: #f2f3f5;
+  --color-muted: #9ba1a8;
+  --color-faint: #6b7178;
+  --color-chip: #c8cdd2;
+  --color-accent: #35d07f;
+  --color-accent-soft: #7fe8b4;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-ink: #06130c;
+
+  /* Tipografi (next/font değişkenlerine bağlanır) */
+  --font-sora: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-manrope: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  /* Şekil */
+  --radius-card: 20px;
+  --radius-portrait: 24px;
+
+  /* Animasyonlar */
+  --animate-drift: gy-drift 16s ease-in-out infinite;
+  --animate-drift2: gy-drift2 20s ease-in-out infinite;
+  --animate-marquee: gy-marquee 38s linear infinite;
+  --animate-pulse-wa: gy-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes gy-drift {
+  0% { transform: translate(-8%, -4%) scale(1); }
+  50% { transform: translate(6%, 5%) scale(1.15); }
+  100% { transform: translate(-8%, -4%) scale(1); }
+}
+@keyframes gy-drift2 {
+  0% { transform: translate(10%, 6%) scale(1.1); }
+  50% { transform: translate(-6%, -6%) scale(0.95); }
+  100% { transform: translate(10%, 6%) scale(1.1); }
+}
+@keyframes gy-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes gy-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.35); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
+/* Hero efektleri */
+@keyframes gy-scan {
+  0% { transform: translateY(-120%); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateY(240%); opacity: 0; }
+}
+@keyframes gy-word-in {
+  from { opacity: 0; transform: translateY(30px) rotate(2deg); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes gy-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes gy-aurora {
+  0% { transform: translate(-6%, -3%) scale(1) rotate(0deg); }
+  50% { transform: translate(5%, 6%) scale(1.18) rotate(8deg); }
+  100% { transform: translate(-6%, -3%) scale(1) rotate(0deg); }
+}
+@keyframes gy-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes gy-grid-pan { from { background-position: 0 0; } to { background-position: 0 44px; } }
+
+/* Kelime kelime beliren H1 */
+.gy-word {
+  display: inline-block;
+  animation: gy-word-in 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+/* Girişte yükselerek beliren blok */
+.gy-rise {
+  animation: gy-rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+/* Typewriter imleci */
+.gy-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--color-accent);
+  animation: gy-blink 1s steps(1) infinite;
+}
+
+/* İnce grain doku */
+.gy-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gy-word,
+  .gy-rise {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .gy-caret {
+    display: none;
+  }
+}
+
+:root {
+  --ac: #35d07f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-manrope);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(53, 208, 127, 0.25);
+}
+
+/* Scroll reveal — data-reveal elemanları JS ile "is-visible" alır */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .gy-motion {
+    animation: none !important;
+  }
+}
+
+/* ============ Bölüm & kart tasarım sistemi ============ */
+
+/* Kart yüzeyi — daha belirgin zemin, üst highlight, derinlik gölgesi */
+.gy-card {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.015)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 20px 40px -28px rgba(0, 0, 0, 0.75);
+  transition:
+    border-color 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.28s ease;
+}
+.gy-card:hover {
+  border-color: rgba(53, 208, 127, 0.42);
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 28px 52px -24px rgba(0, 0, 0, 0.85),
+    0 0 46px -18px rgba(53, 208, 127, 0.45);
+}
+/* Aksan kart (öne çıkan) */
+.gy-card-accent {
+  border-color: rgba(53, 208, 127, 0.24);
+  background: linear-gradient(
+    140deg,
+    rgba(53, 208, 127, 0.1),
+    rgba(53, 208, 127, 0.02)
+  );
+}
+/* İmleci takip eden parıltı katmanı (Spotlight bileşeniyle) */
+.gy-spot {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(53, 208, 127, 0.16),
+    transparent 62%
+  );
+}
+.gy-card:hover .gy-spot {
+  opacity: 1;
+}
+
+/* Gradyan ayraç çizgisi */
+.gy-divider {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+/* Başlık altı animasyonlu aksan çizgisi */
+.gy-underline {
+  position: relative;
+  display: inline-block;
+  height: 3px;
+  width: 56px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
+  box-shadow: 0 0 18px rgba(53, 208, 127, 0.5);
+}
+
+/* Eyebrow önündeki kısa aksan çizgisi */
+.gy-eyebrow-line::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+
+/* Bölüm ambiyans ışığı (düz siyahı kırar) */
+.gy-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+/* Nokta dokusu (dark bölümler için) */
+.gy-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000, transparent 75%);
+}
+
+/* Kapak parıltısı (proje kartları) */
+@keyframes gy-shine {
+  to {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+.gy-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  transform: translateX(-140%) skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.16),
+    transparent
+  );
+  pointer-events: none;
+}
+.gy-shine-host:hover .gy-shine {
+  animation: gy-shine 0.9s ease;
+}
+
+/* Timeline aktif nokta nabzı */
+@keyframes gy-node {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(53, 208, 127, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(53, 208, 127, 0); }
+}
+.gy-node {
+  animation: gy-node 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gy-node,
+  .gy-shine-host:hover .gy-shine {
+    animation: none !important;
+  }
+  .gy-card:hover {
+    transform: none !important;
+  }
+}

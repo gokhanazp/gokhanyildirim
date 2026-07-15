@@ -1,0 +1,49 @@
+export const meta = {
+  title: "Next.js App Router ile SEO: Server Components döneminde metadata",
+  category: "NEXT.JS",
+  readTime: "12 dk okuma",
+  excerpt:
+    "Dinamik metadata, OG görselleri ve yapılandırılmış veri — modern Next.js projelerinde SEO'nun doğru kurgusu.",
+  date: "2026-04-28",
+};
+
+App Router ile birlikte Next.js'te SEO'nun kurulma biçimi tamamen değişti. Artık `<Head>` bileşeni yok; her şey Metadata API üzerinden, sunucu tarafında yönetiliyor. Bu yazıda modern bir projede SEO'yu uçtan uca nasıl kurduğumu anlatıyorum.
+
+## Metadata API temeli
+
+Her `layout.tsx` veya `page.tsx` dosyası, statik bir `metadata` nesnesi ya da dinamik bir `generateMetadata` fonksiyonu export edebilir. `metadataBase` tanımlamak, tüm göreli URL'lerin (canonical, OG görselleri) doğru çözülmesi için kritik.
+
+```
+export const metadata = {
+  metadataBase: new URL("https://siteniz.com"),
+  title: { default: "...", template: "%s | Marka" },
+};
+```
+
+## Dinamik sayfalarda generateMetadata
+
+Blog yazısı gibi dinamik rotalarda başlık ve açıklama içerikten gelmeli:
+
+```
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = getPost(slug);
+  return { title: post.title, description: post.excerpt };
+}
+```
+
+Next 15 ve 16'da `params`'ın bir Promise olduğunu ve `await` edilmesi gerektiğini unutmayın.
+
+## OG ve Twitter kartları
+
+Sosyal paylaşımda düzgün görünmek için her sayfaya `openGraph` ve `twitter` alanları ekleyin. Dinamik OG görsellerini `ImageResponse` ile üretmek, her yazı için otomatik kart oluşturmanın en temiz yolu.
+
+## Yapılandırılmış veri (JSON-LD)
+
+Google'ın içeriğinizi doğru anlaması için şema ekleyin: ana sayfada `Person` ve `Organization`, blog yazısında `Article`, SSS bölümünde `FAQPage`. JSON-LD'yi bir `<script type="application/ld+json">` içinde render etmeniz yeterli.
+
+## sitemap ve robots
+
+App Router, `sitemap.ts` ve `robots.ts` dosyalarını otomatik olarak `/sitemap.xml` ve `/robots.txt` rotalarına dönüştürür. Dinamik içeriğinizi sitemap fonksiyonu içinde döngüyle ekleyin.
+
+Doğru kurulduğunda bu yapı, hem Lighthouse SEO skorunu 100'e taşır hem de içeriğinizin aramada hak ettiği yeri almasını sağlar.

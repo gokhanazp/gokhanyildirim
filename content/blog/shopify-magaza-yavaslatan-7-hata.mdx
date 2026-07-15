@@ -1,0 +1,42 @@
+export const meta = {
+  title: "Shopify mağazanızı yavaşlatan 7 hata ve çözümleri",
+  category: "SHOPIFY",
+  readTime: "8 dk okuma",
+  excerpt:
+    "Uygulama şişkinliğinden optimize edilmemiş görsellere, en sık gördüğüm performans katillerini tek tek ele alıyorum.",
+  date: "2026-05-20",
+};
+
+Shopify mağazalarının çoğu, açılış hızını birkaç basit kararla kaybediyor. Aşağıda, denetimlerde en sık karşılaştığım yedi hatayı ve her biri için uyguladığım çözümü bulacaksınız. Hepsi ölçülebilir ve çoğu birkaç saatlik iş.
+
+## 1. Gereğinden fazla uygulama
+
+Her uygulama, mağazanıza kendi JavaScript ve CSS'ini enjekte eder. Beş uygulama, çoğu zaman beş ayrı script isteği demektir. Gerçekten kullanmadığınız uygulamaları kaldırın; kalanların da mağaza genelinde mi yoksa yalnızca belirli sayfalarda mı yüklendiğini kontrol edin.
+
+## 2. Optimize edilmemiş görseller
+
+Ürün görselleri, çoğu mağazada toplam sayfa ağırlığının yarısından fazlasını oluşturur. Görselleri WebP/AVIF formatında sunun, `loading="lazy"` kullanın ve Shopify'ın `image_url` filtreleriyle doğru boyutu servis edin.
+
+> Tek başına görsel optimizasyonu, çoğu projede LCP'yi %30–40 iyileştiriyor.
+
+## 3. Render'ı bloklayan script'ler
+
+Head içine eklenen senkron `<script>` etiketleri, sayfanın çizilmesini bekletir. Kritik olmayan script'leri `defer` veya `async` ile yükleyin; üçüncü taraf etiketlerini mümkünse Web Worker'a taşıyın.
+
+## 4. Yanlış font yükleme
+
+Özel fontlar, `font-display: swap` olmadan kullanıldığında metin görünene kadar boşluk bırakır. Fontları `preload` edin ve yalnızca kullandığınız ağırlıkları dahil edin.
+
+## 5. Devasa tema kodu
+
+Yıllar içinde biriken kullanılmayan section ve snippet'ler, temayı şişirir. Ölü kodu temizleyin, tek bir global CSS yerine sayfaya özel stiller kullanın.
+
+## 6. Carousel ve otomatik oynatılan video
+
+Ana sayfadaki ağır slider'lar ve otomatik videolar hem performansı hem dönüşümü düşürür. Statik bir hero görseli, çoğu zaman daha hızlı ve daha yüksek dönüşümlüdür.
+
+## 7. Ölçüm yapmamak
+
+En büyük hata, hiç ölçmemek. Lighthouse ve Core Web Vitals raporlarını düzenli takip edin; her değişikliğin etkisini sayısal olarak görün.
+
+Bu yedi maddeyi bir kez düzgün ele almak, çoğu mağazada gözle görülür bir hız ve dönüşüm artışı sağlar. Mağazanızın nerede kan kaybettiğini birlikte tespit edelim.
