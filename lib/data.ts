@@ -65,9 +65,9 @@ export const projects: Project[] = [
   {
     name: "İstanbul Endüstriyel Mutfak Servisi",
     url: "http://istanbulendustriyelmutfakservisi.com",
-    tech: "React",
+    tech: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
     kind: "KURUMSAL",
-    desc: "Servis işletmesi için React ile geliştirilmiş hızlı kurumsal site.",
+    desc: "Servis işletmesi için Next.js 16 App Router ile geliştirilmiş hızlı kurumsal site.",
     hue: 200,
   },
   {
@@ -89,9 +89,9 @@ export const projects: Project[] = [
   {
     name: "Piba Wings Mobility",
     url: "https://www.pibawingsmobility.com",
-    tech: "Node.js · TailwindCSS",
+    tech: "Node.js 20 · Express 4 · React 19 · Tailwind CSS 3",
     kind: "TURİZM",
-    desc: "Tekerlekli sandalye kullanıcıları için engelsiz Türkiye turları platformu. Node.js altyapısı, TailwindCSS arayüzü, çok dilli içerik ve güçlü teknik SEO kurgusu.",
+    desc: "Tekerlekli sandalye kullanıcıları için engelsiz Türkiye turları platformu. Node.js 20 + Express 4 altyapısı, React 19 + Tailwind arayüzü, çok dilli içerik ve güçlü teknik SEO kurgusu.",
     hue: 190,
     logo: "/projeler/pibawings-logo.png",
     logoTheme: "light",
@@ -107,9 +107,9 @@ export const projects: Project[] = [
   {
     name: "Şimşek Çalışma İzni",
     url: "https://www.simsekcalismaizni.com/",
-    tech: "React · Node.js",
+    tech: "Next.js 15 · React 19 · TypeScript · Tailwind CSS 4",
     kind: "KURUMSAL",
-    desc: "Danışmanlık firması için React + Node.js web uygulaması.",
+    desc: "Danışmanlık firması için Next.js 15 App Router ile geliştirilmiş web uygulaması.",
     hue: 220,
     logo: "/projeler/simsekcalismaizni.png",
     logoTheme: "light",
