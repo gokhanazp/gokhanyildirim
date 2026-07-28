@@ -90,8 +90,15 @@
 
   <!-- ============ HERO ============ -->
   <section class="relative h-screen min-h-[640px] flex items-center overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=2000&q=80" alt="Textile production" class="hero-zoom absolute inset-0 w-full h-full object-cover" />
+    <div class="hero-slider absolute inset-0" data-hero-slider>
+      <img src="assets/img/hero.jpg" alt="ST Global Textile" class="hero-slide hero-zoom is-active" />
+      <img src="assets/img/hero-2.jpg" alt="ST Global Textile" class="hero-slide hero-zoom" />
+    </div>
     <div class="hero-overlay absolute inset-0"></div>
+    <div class="hero-dots" data-hero-dots>
+      <button type="button" class="hero-dot is-active" aria-label="Slide 1"></button>
+      <button type="button" class="hero-dot" aria-label="Slide 2"></button>
+    </div>
     <div class="relative max-w-7xl mx-auto px-5 lg:px-8 w-full text-white">
       <p class="eyebrow !text-platinum mb-5 reveal" data-i18n="home.hero.tag">Since 2010 · Global Textile Manufacturing</p>
       <h1 class="font-display text-5xl md:text-7xl leading-[1.05] max-w-3xl reveal" data-i18n="home.hero.title">Threads of Excellence,<br>Woven for the World</h1>
@@ -132,8 +139,9 @@
   <!-- ============ INTRO ============ -->
   <section class="py-24 lg:py-32">
     <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
-      <div class="reveal">
-        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1200&q=80" alt="Fabric" class="w-full h-[480px] object-cover" />
+      <div class="reveal grid grid-cols-2 gap-4">
+        <img src="assets/img/about-1.jpg" alt="ST Global Textile" class="w-full h-[480px] object-cover" />
+        <img src="assets/img/about-2.jpg" alt="ST Global Textile" class="w-full h-[480px] object-cover" />
       </div>
       <div class="reveal">
         <p class="eyebrow mb-4" data-i18n="home.intro.eyebrow">Who We Are</p>
@@ -160,7 +168,7 @@
           </span>
         </a>
         <a href="products.html" class="product-card block h-80 reveal">
-          <img src="https://images.unsplash.com/photo-1640767760729-7bfb6ce43ad4?auto=format&fit=crop&w=900&q=80" alt="" class="w-full h-full object-cover" />
+          <img src="assets/img/synthetic.jpg" alt="Synthetic fabrics" class="w-full h-full object-cover" />
           <span class="cap font-display text-2xl" data-i18n="home.products.p2">Synthetic Fabrics</span>
         </a>
         <a href="products.html" class="product-card block h-80 reveal">
@@ -207,7 +215,7 @@
 
   <!-- ============ CTA ============ -->
   <section class="relative py-28 text-white text-center overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&w=2000&q=80" alt="" class="hero-zoom absolute inset-0 w-full h-full object-cover" />
+    <img src="assets/img/cta.jpg" alt="" class="hero-zoom absolute inset-0 w-full h-full object-cover" />
     <div class="absolute inset-0 bg-ink/75"></div>
     <div class="relative max-w-2xl mx-auto px-5 reveal">
       <h2 class="font-display text-4xl md:text-5xl mb-5" data-i18n="home.cta.title">Let's build your next collection together</h2>
