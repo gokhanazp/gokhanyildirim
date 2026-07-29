@@ -2,6 +2,9 @@ import type { ComponentType } from "react";
 import * as shopifyHatalar from "@/content/blog/shopify-magaza-yavaslatan-7-hata.mdx";
 import * as nextSeo from "@/content/blog/nextjs-app-router-seo-metadata.mdx";
 import * as platformTasima from "@/content/blog/platform-tasima-shopify-gecis.mdx";
+import * as shopifyPartner from "@/content/blog/shopify-partner-nedir.mdx";
+import * as shopifyEticaret from "@/content/blog/shopify-ile-e-ticaret.mdx";
+import * as shopifySite from "@/content/blog/shopify-ile-site-yaptirmak.mdx";
 
 export interface PostMeta {
   title: string;
@@ -19,6 +22,9 @@ export interface PostEntry {
 
 const registry: { slug: string; mod: { meta: PostMeta; default: ComponentType } }[] =
   [
+    { slug: "shopify-partner-nedir", mod: shopifyPartner },
+    { slug: "shopify-ile-e-ticaret", mod: shopifyEticaret },
+    { slug: "shopify-ile-site-yaptirmak", mod: shopifySite },
     { slug: "shopify-magaza-yavaslatan-7-hata", mod: shopifyHatalar },
     { slug: "nextjs-app-router-seo-metadata", mod: nextSeo },
     { slug: "platform-tasima-shopify-gecis", mod: platformTasima },

@@ -79,6 +79,14 @@ export const projects: Project[] = [
     hue: 205,
   },
   {
+    name: "Endüstriyel Bulaşık Makinesi Servisi",
+    url: "https://endustriyelbulasikmakinesiservisi.com/",
+    tech: "Node.js · React 19 · Tailwind CSS",
+    kind: "KURUMSAL",
+    desc: "Endüstriyel bulaşık makinesi servisi için Node.js + React ile geliştirilmiş, yerel SEO odaklı hızlı hizmet sitesi.",
+    hue: 198,
+  },
+  {
     name: "Atalay Servisi",
     url: "https://atalayservisi.com",
     tech: "Web",
@@ -204,6 +212,7 @@ export const projectGroups: ProjectGroup[] = [
       "Piba Wings Mobility",
       "İstanbul Endüstriyel Mutfak Servisi",
       "Endüstriyel Buzdolabı Tamircisi",
+      "Endüstriyel Bulaşık Makinesi Servisi",
       "Öztiryakiler Yetkili Servisi",
       "Şimşek Çalışma İzni",
       "Oskai",
