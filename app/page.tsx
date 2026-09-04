@@ -15,6 +15,23 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import ClientEffects from "@/components/ClientEffects";
+import { faqData } from "@/lib/data";
+import { site } from "@/lib/site";
+import { breadcrumb, faqPage, graph } from "@/lib/schema";
+
+/** Ana sayfaya özgü şemalar: FAQPage (gerçek SSS bölümü burada) + Breadcrumb */
+function HomeJsonLd() {
+  const data = graph([
+    faqPage(faqData, site.url),
+    breadcrumb([{ name: "Ana sayfa", path: "/" }]),
+  ]);
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
 
 export default function Home() {
   return (
@@ -38,6 +55,7 @@ export default function Home() {
       <Footer />
       <FloatingWhatsApp />
       <ClientEffects />
+      <HomeJsonLd />
     </div>
   );
 }

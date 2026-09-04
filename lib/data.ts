@@ -375,34 +375,67 @@ export const techMarquee = [
   "CLOUDFLARE",
 ];
 
-export interface Testimonial {
-  quote: string;
-  initials: string;
-  name: string;
+/**
+ * Ölçülebilir sonuç kartları — uydurma müşteri yorumu yerine, portfolyodaki
+ * gerçek projelerden doğrulanabilir çıktılar.
+ *
+ * ⚠️ Her kartın `metric` değeri yayına almadan önce teyit edilmeli.
+ * Gerçek müşteri yorumu toplandığında bu bölümün altına ayrı bir
+ * "Referanslar" bloğu eklenebilir.
+ */
+export interface ResultCard {
+  metric: string;
+  metricLabel: string;
   title: string;
+  desc: string;
+  project: string;
+  projectUrl?: string;
 }
 
-export const testimonials: Testimonial[] = [
+export const resultCards: ResultCard[] = [
   {
-    quote:
-      "Shopify mağazamızı sıfırdan kurdu. Hem hız hem dönüşüm oranımız ilk aydan itibaren gözle görülür şekilde arttı. Süreç boyunca her adımı şeffaflıkla paylaştı.",
-    initials: "AK",
-    name: "A. K.",
-    title: "Moda Markası Kurucusu",
+    metric: "0",
+    metricLabel: "sıralama kaybı",
+    title: "Platform taşımada SEO koruması",
+    desc: "OpenCart ve WordPress'ten Shopify'a yaptığım taşımalarda URL haritası, 301 yönlendirmeleri ve yapılandırılmış veri baştan planlandı; organik sıralamalar korundu.",
+    project: "Voidu · Yedek Parçam",
   },
   {
-    quote:
-      "OpenCart'tan Shopify'a taşınma sürecinde tek bir sıralama kaybı yaşamadık. Teknik SEO bilgisi gerçekten üst düzey; her kararın gerekçesini açıklayarak ilerledi.",
-    initials: "MB",
-    name: "M. B.",
-    title: "Yedek Parça E-ticareti, Genel Müdür",
+    metric: "600+",
+    metricLabel: "ürünlük katalog",
+    title: "Derin katalogda performans",
+    desc: "Beyaz eşya yedek parçasında 600+ ürün, derin kategori ağacı, stok durumu ve sipariş takibi — sıfırdan geliştirilmiş özel Shopify teması üzerinde.",
+    project: "Xprime Yedek Parça",
+    projectUrl: "https://www.xprimeyedekparca.com",
   },
   {
-    quote:
-      "React Native uygulamamızı hem iOS hem Android'de sorunsuz yayına aldı. Teslim tarihine gün gün sadık kaldı; sonrasında da desteğini hiç esirgemedi.",
-    initials: "SD",
-    name: "S. D.",
-    title: "Restoran Zinciri Sahibi",
+    metric: "14 yıl",
+    metricLabel: "20 yayında proje",
+    title: "Hem geliştirici hem e-ticaret yöneticisi",
+    desc: "2011'den bu yana kod tarafında; 2017—2022 arasında Cabani Shoes, Kurshuni Jewellery ve Masse Yapı'da e-ticaret yöneticisi olarak satış tarafında. Kararları iki taraftan da görmüş bir bakış.",
+    project: "Cabani · Kurshuni · Masse Yapı"
+  },
+  {
+    metric: "Yeşil",
+    metricLabel: "Core Web Vitals",
+    title: "Hız doğrudan satış",
+    desc: "LCP, CLS ve INP metriklerinde ölçülebilir iyileştirme; tema ve uygulama katmanında gereksiz script, font ve görsel yükünün temizlenmesi.",
+    project: "Shopify hız optimizasyonu",
+  },
+  {
+    metric: "Çok dilli",
+    metricLabel: "teknik SEO kurulumu",
+    title: "Uluslararası görünürlük",
+    desc: "Node.js + React tabanlı turizm platformunda çok dilli içerik mimarisi, hreflang kurgusu ve teknik SEO altyapısı.",
+    project: "Piba Wings Mobility",
+    projectUrl: "https://www.pibawingsmobility.com",
+  },
+  {
+    metric: "iOS + Android",
+    metricLabel: "tek kod tabanı",
+    title: "Mobil uygulama teslimi",
+    desc: "React Native ile iki platformda tek kod tabanından yayına alınan restoran sipariş uygulaması; mağaza süreçleri dahil uçtan uca teslim.",
+    project: "Riverside Burgers",
   },
 ];
 

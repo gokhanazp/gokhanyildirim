@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Manrope, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/site";
-import { faqData } from "@/lib/data";
+import { graph, siteGraph } from "@/lib/schema";
 import "./globals.css";
 
 const sora = Sora({
@@ -28,20 +28,10 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role} | İstanbul`,
+    default: site.titleDefault,
     template: `%s | ${site.name}`,
   },
   description: site.description,
-  keywords: [
-    "Shopify Partner",
-    "Senior Frontend Developer",
-    "React",
-    "Next.js",
-    "E-ticaret danışmanlığı",
-    "Shopify tema geliştirme",
-    "Teknik SEO",
-    "İstanbul",
-  ],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   alternates: { canonical: "/" },
@@ -50,7 +40,7 @@ export const metadata: Metadata = {
     locale: site.locale,
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.role} | İstanbul`,
+    title: site.titleDefault,
     description: site.description,
     images: [
       {
@@ -63,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: site.titleDefault,
     description: site.description,
     images: ["/gokhan-yildirim.jpeg"],
   },
@@ -80,58 +70,12 @@ export const viewport: Viewport = {
 };
 
 function JsonLd() {
-  const graph = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": `${site.url}/#person`,
-        name: site.name,
-        jobTitle: site.role,
-        url: site.url,
-        image: `${site.url}/gokhan-yildirim.jpeg`,
-        email: site.email,
-        sameAs: [site.social.instagram, site.social.linkedin],
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "İstanbul",
-          addressCountry: "TR",
-        },
-        knowsAbout: [
-          "Shopify",
-          "React",
-          "Next.js",
-          "TypeScript",
-          "React Native",
-          "E-ticaret",
-          "Teknik SEO",
-          "Core Web Vitals",
-        ],
-      },
-      {
-        "@type": "Organization",
-        "@id": `${site.url}/#organization`,
-        name: `${site.name} — ${site.role}`,
-        url: site.url,
-        founder: { "@id": `${site.url}/#person` },
-        areaServed: "Global",
-        description: site.description,
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${site.url}/#faq`,
-        mainEntity: faqData.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
-        })),
-      },
-    ],
-  };
+  // NOT: FAQPage şeması bilerek burada DEĞİL — yalnızca gerçek SSS bölümü
+  // bulunan sayfada (app/page.tsx) yayınlanıyor.
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph(siteGraph())) }}
     />
   );
 }

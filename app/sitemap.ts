@@ -1,29 +1,22 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { posts } from "@/lib/posts";
+import { posts, latestUpdate } from "@/lib/posts";
 
 export const dynamic = "force-static";
 
+/**
+ * changefreq ve priority bilerek yok — Google bu alanları yok sayıyor.
+ * lastmod gerçek içerik tarihlerinden türetiliyor (sabit tarih değil).
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const newest = latestUpdate();
+
   return [
-    {
-      url: site.url,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${site.url}/blog`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
+    { url: site.url, lastModified: newest },
+    { url: `${site.url}/blog`, lastModified: newest },
     ...posts.map((p) => ({
       url: `${site.url}/blog/${p.slug}`,
-      lastModified: new Date(p.meta.date),
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
+      lastModified: new Date(p.updated),
     })),
   ];
 }

@@ -36,7 +36,7 @@ export default function Blog() {
                 <span className="rounded-md border border-accent/20 bg-accent/[0.08] px-2.5 py-1 text-accent">
                   {post.meta.category}
                 </span>
-                <span className="text-faint">{post.meta.readTime}</span>
+                <span className="text-faint">{post.readTime}</span>
               </div>
               <div className="font-sora text-[19px] font-semibold leading-[1.35] tracking-[-0.01em] text-balance transition-colors group-hover:text-accent">
                 {post.meta.title}

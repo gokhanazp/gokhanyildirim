@@ -18,12 +18,11 @@ export default function Logo({
   return (
     <Link
       href={href}
-      aria-label="yıldırım.dev — ana sayfa"
       className="flex items-center gap-3"
     >
       <Image
         src="/logo-mark-dark.svg"
-        alt=""
+        alt="Gökhan Yıldırım — yıldırım.dev logosu"
         width={mark}
         height={mark}
         style={{ width: `${mark}px`, height: `${mark}px` }}

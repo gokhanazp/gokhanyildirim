@@ -2,20 +2,22 @@ import Link from "next/link";
 import HeroFX from "./hero/HeroFX";
 import Typewriter from "./hero/Typewriter";
 import MagneticButton from "./hero/MagneticButton";
+import { projects } from "@/lib/data";
 
 const stats = [
   { value: 14, label: "Yıl Deneyim" },
-  { value: 14, label: "Yayında Proje" },
+  { value: projects.length, label: "Yayında Proje" },
   { value: 30, label: "Teknoloji & Araç" },
 ];
 
+// H1 artık hedef anahtar kelimeleri içeriyor; slogan altta lead olarak duruyor.
 const words: { text: string; accent?: boolean }[] = [
-  { text: "E-ticarette" },
-  { text: "büyümeyi" },
-  { text: "kod", accent: true },
-  { text: "kalitesiyle", accent: true },
-  { text: "inşa" },
-  { text: "ediyorum." },
+  { text: "İstanbul'da" },
+  { text: "Shopify", accent: true },
+  { text: "uzmanı", accent: true },
+  { text: "&" },
+  { text: "e-ticaret" },
+  { text: "geliştirici" },
 ];
 
 const WORD_BASE = 0.35;
@@ -36,7 +38,7 @@ export default function Hero() {
           <Typewriter text="SHOPIFY PARTNER · İSTANBUL" />
         </div>
 
-        <h1 className="m-0 max-w-[15ch] font-sora text-[clamp(44px,6.4vw,84px)] font-bold leading-[1.04] tracking-[-0.035em] text-balance">
+        <h1 className="m-0 max-w-[18ch] font-sora text-[clamp(38px,5.6vw,74px)] font-bold leading-[1.04] tracking-[-0.035em] text-balance">
           {words.map((w, i) => (
             <span key={i}>
               <span
@@ -57,8 +59,19 @@ export default function Hero() {
         </h1>
 
         <p
+          className="gy-rise m-0 max-w-[40ch] font-sora text-[clamp(20px,2.4vw,28px)] font-semibold leading-[1.3] tracking-[-0.02em] text-ink text-balance"
+          style={{ animationDelay: `${afterWords + 0.03}s` }}
+        >
+          E-ticarette büyümeyi{" "}
+          <span className="bg-[linear-gradient(100deg,var(--color-accent),var(--color-accent-soft))] bg-clip-text text-transparent">
+            kod kalitesiyle
+          </span>{" "}
+          inşa ediyorum.
+        </p>
+
+        <p
           className="gy-rise m-0 max-w-[56ch] text-[19px] leading-[1.65] text-muted text-pretty"
-          style={{ animationDelay: `${afterWords + 0.05}s` }}
+          style={{ animationDelay: `${afterWords + 0.09}s` }}
         >
           14 yılı aşkın süredir markaların dijital vitrinlerini tasarlıyor ve
           geliştiriyorum. Shopify mağazaları, React uygulamaları ve

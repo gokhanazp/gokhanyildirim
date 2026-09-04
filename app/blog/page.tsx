@@ -7,6 +7,7 @@ import Spotlight from "@/components/Spotlight";
 import { Eyebrow } from "@/components/ui";
 import { posts, formatDate } from "@/lib/posts";
 import { site } from "@/lib/site";
+import { breadcrumb, graph } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Blog — E-ticaret ve Frontend Notları",
@@ -50,7 +51,7 @@ export default function BlogIndex() {
                 <span className="rounded-md border border-accent/20 bg-accent/[0.08] px-2.5 py-1 text-accent">
                   {p.meta.category}
                 </span>
-                <span className="text-faint">{p.meta.readTime}</span>
+                <span className="text-faint">{p.readTime}</span>
               </div>
               <div className="font-sora text-[19px] font-semibold leading-[1.35] tracking-[-0.01em] text-balance transition-colors group-hover:text-accent">
                 {p.meta.title}
@@ -73,6 +74,33 @@ export default function BlogIndex() {
           ))}
         </div>
       </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            graph([
+              {
+                "@type": "Blog",
+                "@id": `${site.url}/blog#blog`,
+                name: "Gökhan Yıldırım — E-ticaret ve Frontend Notları",
+                url: `${site.url}/blog`,
+                inLanguage: "tr-TR",
+                blogPost: posts.map((p) => ({
+                  "@type": "BlogPosting",
+                  headline: p.meta.title,
+                  url: `${site.url}/blog/${p.slug}`,
+                  datePublished: p.meta.date,
+                  dateModified: p.updated,
+                })),
+              },
+              breadcrumb([
+                { name: "Ana sayfa", path: "/" },
+                { name: "Blog", path: "/blog" },
+              ]),
+            ]),
+          ),
+        }}
+      />
       <Footer />
       <FloatingWhatsApp />
     </div>
