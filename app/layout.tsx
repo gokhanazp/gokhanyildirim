@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Sora, Manrope, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/site";
 import { graph, siteGraph } from "@/lib/schema";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 const sora = Sora({
@@ -88,6 +89,7 @@ export default function RootLayout({
       <body>
         {children}
         <JsonLd />
+        <Analytics />
       </body>
     </html>
   );
