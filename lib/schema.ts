@@ -103,6 +103,42 @@ export function faqPage(
   };
 }
 
+/** Service şeması — hizmet sayfaları için */
+export function serviceSchema(opts: {
+  name: string;
+  description: string;
+  path: string;
+  serviceType: readonly string[];
+  offers: readonly { title: string; desc: string }[];
+}) {
+  const url = `${site.url}${opts.path}`;
+  return {
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: opts.name,
+    description: opts.description,
+    url,
+    serviceType: [...opts.serviceType],
+    provider: { "@id": BUSINESS_ID },
+    areaServed: [
+      { "@type": "City", name: "İstanbul" },
+      { "@type": "Country", name: "Türkiye" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${opts.name} — kapsam`,
+      itemListElement: opts.offers.map((o) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: o.title,
+          description: o.desc,
+        },
+      })),
+    },
+  };
+}
+
 export function graph(nodes: unknown[]) {
   return { "@context": "https://schema.org", "@graph": nodes };
 }

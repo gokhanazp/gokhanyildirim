@@ -496,15 +496,47 @@ export interface Service {
   no: string;
   title: string;
   desc: string;
+  /** Hizmet detay sayfası — anchor değil gerçek URL */
+  href: string;
 }
 
 export const services: Service[] = [
-  { no: "01", title: "Shopify Mağaza Geliştirme", desc: "Kurulumdan yayına, satışa hazır Shopify mağazaları." },
-  { no: "02", title: "React & Next.js Geliştirme", desc: "Modern, hızlı ve ölçeklenebilir web uygulamaları." },
-  { no: "03", title: "Kurumsal Web Sitesi", desc: "Markanızı en iyi şekilde temsil eden kurumsal siteler." },
-  { no: "04", title: "Mobil Uygulama (React Native)", desc: "iOS ve Android için tek kod tabanlı native deneyim." },
-  { no: "05", title: "SEO & Hız Optimizasyonu", desc: "Google'da görünürlük ve Core Web Vitals'ta yeşil skorlar." },
-  { no: "06", title: "Teknik Danışmanlık", desc: "E-ticaret altyapısı, teknoloji seçimi ve büyüme stratejisi." },
+  {
+    no: "01",
+    title: "Shopify Mağaza Kurulumu",
+    desc: "Ödeme, kargo, vergi ve katalog dahil satışa hazır teslim.",
+    href: "/hizmetler/shopify-magaza-kurulumu",
+  },
+  {
+    no: "02",
+    title: "Shopify Tema Geliştirme",
+    desc: "Sıfırdan özel tema ya da premium temanın birebir uyarlanması.",
+    href: "/hizmetler/shopify-tema-gelistirme",
+  },
+  {
+    no: "03",
+    title: "Shopify SEO",
+    desc: "URL yapısı, yapılandırılmış veri ve koleksiyon mimarisi.",
+    href: "/hizmetler/shopify-seo",
+  },
+  {
+    no: "04",
+    title: "Hız & Core Web Vitals",
+    desc: "LCP, CLS ve INP ölçümü; öncesi/sonrası raporlu iyileştirme.",
+    href: "/hizmetler/shopify-hiz-optimizasyonu",
+  },
+  {
+    no: "05",
+    title: "Shopify'a Geçiş",
+    desc: "Veri kaybı ve sıralama kaybı olmadan platform taşıma.",
+    href: "/hizmetler/shopifya-gecis",
+  },
+  {
+    no: "06",
+    title: "React, Next.js & Danışmanlık",
+    desc: "Kurumsal siteler, React Native uygulamalar ve e-ticaret danışmanlığı.",
+    href: "/hizmetler",
+  },
 ];
 
 export interface ShopifyThemeOption {

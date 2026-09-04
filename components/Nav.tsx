@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import NavProgress from "./NavProgress";
 import SocialIcons from "./SocialIcons";
@@ -11,6 +12,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>("");
+  const pathname = usePathname();
 
   // Scroll durumu (pill'i küçültüp koyulaştırmak için)
   useEffect(() => {
@@ -41,8 +43,12 @@ export default function Nav() {
     return () => io.disconnect();
   }, []);
 
-  const isLinkActive = (href: string) =>
-    href.includes("#") && href.split("#")[1] === active;
+  const isLinkActive = (href: string) => {
+    // Route linkleri (ör. /hizmetler, /blog) pathname'e göre
+    if (!href.includes("#")) return pathname.startsWith(href);
+    // Anchor linkleri yalnızca ana sayfada scroll-spy ile
+    return pathname === "/" && href.split("#")[1] === active;
+  };
 
   // Menü açıkken scroll kilidi + Esc
   useEffect(() => {

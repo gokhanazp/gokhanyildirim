@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { posts, getPost, formatDate } from "@/lib/posts";
 import { site } from "@/lib/site";
+import { services } from "@/lib/services";
 import { BUSINESS_ID, PERSON_ID, breadcrumb, graph } from "@/lib/schema";
 
 type Params = { slug: string };
@@ -58,6 +59,10 @@ export default async function BlogPost({
   const { Content } = post;
   const url = `${site.url}/blog/${slug}`;
   const others = posts.filter((p) => p.slug !== slug).slice(0, 2);
+  // Bu yazıyı ilgili gösteren hizmet sayfaları — iç link ağı
+  const linkedServices = services
+    .filter((sv) => sv.relatedPosts.includes(slug))
+    .slice(0, 3);
 
   // NOT: FAQPage şeması bilerek yok — blog yazılarında SSS bölümü bulunmuyor.
   const jsonLd = graph([
@@ -116,8 +121,33 @@ export default async function BlogPost({
           <Content />
         </article>
 
+        {/* İlgili hizmetler */}
+        {linkedServices.length > 0 && (
+          <div className="mt-16">
+            <div className="mb-5 font-mono text-[12.5px] tracking-[0.12em] text-accent">
+              BU KONUDA VERDİĞİM HİZMET
+            </div>
+            <div className="flex flex-col gap-3">
+              {linkedServices.map((sv) => (
+                <Link
+                  key={sv.slug}
+                  href={`/hizmetler/${sv.slug}`}
+                  className="gy-card group flex flex-col gap-1.5 p-6"
+                >
+                  <div className="font-sora text-[16.5px] font-semibold transition-colors group-hover:text-accent">
+                    {sv.navLabel}
+                  </div>
+                  <p className="m-0 text-[14px] leading-[1.65] text-muted">
+                    {sv.summary}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* CTA */}
-        <div className="mt-16 flex flex-col items-start gap-4 rounded-[20px] border border-accent/20 bg-[linear-gradient(140deg,rgba(53,208,127,0.08),rgba(255,255,255,0.015))] p-8">
+        <div className="mt-12 flex flex-col items-start gap-4 rounded-[20px] border border-accent/20 bg-[linear-gradient(140deg,rgba(53,208,127,0.08),rgba(255,255,255,0.015))] p-8">
           <div className="font-sora text-[20px] font-semibold">
             Benzer bir projeniz mi var?
           </div>
