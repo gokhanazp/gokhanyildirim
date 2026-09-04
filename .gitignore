@@ -10,3 +10,6 @@ next-env.d.ts
 
 # Geçici / kullanılmayan
 public/projeler/_crasmoda_preview.png
+
+# Cowork ekran görüntüleri (Claude desktop otomatik kaydediyor)
+Claude outputs/
